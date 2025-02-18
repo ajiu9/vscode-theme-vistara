@@ -50,7 +50,7 @@
     ]
   },
   "scripts": {
-    "build": "tsup src/index.ts --external vscode",
+    "build": "tsup scripts/index.ts --external vscode",
     "dev": "tsx watch scripts/index.ts",
     "lint": "eslint .",
     "vscode:prepublish": "pnpm run build",
@@ -62,11 +62,13 @@
   },
   "devDependencies": {
     "@ajiu9/eslint-config": "^2.5.2",
+    "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.4.1",
     "@types/vscode": "^1.92.0",
     "@vscode/vsce": "^3.0.0",
     "bumpp": "^9.5.1",
     "eslint": "^9.9.0",
+    "fs-extra": "^11.3.0",
     "pnpm": "^9.7.1",
     "tsup": "^8.2.4",
     "tsx": "^4.19.2",

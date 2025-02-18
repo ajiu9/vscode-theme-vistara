@@ -9,7 +9,7 @@ export default ajiu9(
   },
   {
     rules: {
-      // overrides
+      'no-console': 'off',
     },
   },
 )
