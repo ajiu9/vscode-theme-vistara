@@ -1,0 +1,78 @@
+{
+  "publisher": "ajiu9",
+  "name": "theme-vistara",
+  "displayName": "Vistara theme",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Vistara theme for VS Code",
+  "author": "Ajiu9 <615944323@qq.com>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/ajiu9",
+  "homepage": "https://github.com/ajiu9/vscode-theme-vistara#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajiu9/vscode-theme-vistara"
+  },
+  "bugs": {
+    "url": "https://github.com/ajiu9/vscode-theme-vistara/issues"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/ajiu9"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/index.js",
+  "icon": "res/icon.png",
+  "files": [
+    "LICENSE.md",
+    "dist/*",
+    "res/*"
+  ],
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Vistara Light",
+        "uiTheme": "vs",
+        "path": "./themes/vistara-light.json"
+      },
+      {
+        "label": "Vistara Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vistara-dark.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --external vscode",
+    "dev": "tsx watch scripts/index.ts",
+    "lint": "eslint .",
+    "vscode:prepublish": "pnpm run build",
+    "publish": "vsce publish --no-dependencies",
+    "pack": "vsce package --no-dependencies",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp && pnpm run publish"
+  },
+  "devDependencies": {
+    "@ajiu9/eslint-config": "^2.5.2",
+    "@types/node": "^22.4.1",
+    "@types/vscode": "^1.92.0",
+    "@vscode/vsce": "^3.0.0",
+    "bumpp": "^9.5.1",
+    "eslint": "^9.9.0",
+    "pnpm": "^9.7.1",
+    "reactive-vscode": "^0.2.0",
+    "tsup": "^8.2.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.1",
+    "vitest": "^2.0.5"
+  }
+}
