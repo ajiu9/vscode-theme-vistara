@@ -67,6 +67,7 @@
     "@types/vscode": "^1.92.0",
     "@vscode/vsce": "^3.0.0",
     "bumpp": "^9.5.1",
+    "comuse-shared": "^3.2.5",
     "eslint": "^9.9.0",
     "fs-extra": "^11.3.0",
     "pnpm": "^9.7.1",

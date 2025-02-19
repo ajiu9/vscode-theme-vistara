@@ -1,5 +1,5 @@
-import type { VistaraThemes } from './colors'
-import { colors } from './colors'
+import { toArray } from 'comuse-shared'
+import { colors, VistaraThemes } from './colors'
 
 export interface GetThemeOptions {
   color: 'light' | 'dark'
@@ -8,9 +8,23 @@ export interface GetThemeOptions {
   black?: boolean
 }
 
-export function createThemeHelpers({ color, name, soft, black }: GetThemeOptions) {
+function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export function createThemeHelpers({ color, soft, black }: GetThemeOptions) {
   const pick = (options: { light?: string, dark?: string }) => options[color]
-  const v = (key: keyof typeof VistaraThemes, op = '') => {}
+  const v = (key: keyof typeof VistaraThemes, op = '') => {
+    let obj = black
+      ? VistaraThemes[`black${capitalize(key)}` as keyof typeof VistaraThemes] || VistaraThemes[key]
+      : soft
+        ? VistaraThemes[`soft${capitalize(key)}` as keyof typeof VistaraThemes] || VistaraThemes[key]
+        : VistaraThemes[key]
+
+    if (typeof obj === 'string')
+      obj = [obj, obj]
+    return pick({ light: obj[1] + op, dark: obj[0] + op })
+  }
 
   const colors = getColors(color)
   return {
@@ -29,8 +43,9 @@ function getColors(style: 'light' | 'dark'): typeof colors {
       else if (name === 'white')
         darkColors.black = val
       else
-        darkColors[name] = [...toAarray(val)].reverse()
+        darkColors[name] = [...toArray(val)].reverse()
     })
+    return darkColors
   }
   else
     return colors
