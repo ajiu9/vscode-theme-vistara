@@ -9,14 +9,14 @@ async function main() {
   Promise.all([
     fs.writeJSON('./themes/vistara-light.json',
       getTheme({
-        color: 'light',
+        style: 'light',
         name: 'Vistara Light',
       }),
       { spaces: 2 },
     ),
     fs.writeJSON('./themes/vistara-dark.json',
       getTheme({
-        color: 'dark',
+        style: 'dark',
         name: 'Vistara Dark',
       }),
       { spaces: 2 },

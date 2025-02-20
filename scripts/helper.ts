@@ -2,7 +2,7 @@ import { toArray } from 'comuse-shared'
 import { colors, VistaraThemes } from './colors'
 
 export interface GetThemeOptions {
-  color: 'light' | 'dark'
+  style: 'light' | 'dark'
   name: string
   soft?: boolean
   black?: boolean
@@ -12,8 +12,8 @@ function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-export function createThemeHelpers({ color, soft, black }: GetThemeOptions) {
-  const pick = (options: { light?: string, dark?: string }) => options[color]
+export function createThemeHelpers({ style, soft, black }: GetThemeOptions) {
+  const pick = (options: { light?: string, dark?: string }) => options[style]
   const v = (key: keyof typeof VistaraThemes, op = '') => {
     let obj = black
       ? VistaraThemes[`black${capitalize(key)}` as keyof typeof VistaraThemes] || VistaraThemes[key]
@@ -23,10 +23,11 @@ export function createThemeHelpers({ color, soft, black }: GetThemeOptions) {
 
     if (typeof obj === 'string')
       obj = [obj, obj]
+
     return pick({ light: obj[1] + op, dark: obj[0] + op })
   }
 
-  const colors = getColors(color)
+  const colors = getColors(style)
   return {
     pick,
     v,

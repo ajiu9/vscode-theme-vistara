@@ -97,7 +97,7 @@
     "breadcrumb.background": "#f7f7f7",
     "breadcrumb.activeSelectionForeground": "#22222218",
     "breadcrumbPicker.background": "#ffffff",
-    "editor.foreground": "#393a34",
+    "editor.foreground": "foreground",
     "editor.background": "#ffffff",
     "editorWidget.background": "#ffffff",
     "editor.foldBackground": "#22222210",
